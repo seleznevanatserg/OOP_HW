@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ThreadLocalRandom;
+import HW_03.ISum;
 
 
 public class Market implements IMarketBehaviour {
@@ -35,9 +36,13 @@ public class Market implements IMarketBehaviour {
     }
 
 
+    
 
 
     public void refresh(Queue queue, Map orders, List clients) { 
+        ISum sum;
+        sum = (a, b) -> a + b;
+
         int randomNumIn = 0;
         if (queue.size() == 0){
             randomNumIn = ThreadLocalRandom.current().nextInt(1, 3);
@@ -52,7 +57,13 @@ public class Market implements IMarketBehaviour {
             for (int i = 0; i < randomNumIn; i++){
                 orders.put(numberOrder + i, clients.get(numRandomForArray(clients)));
                 counterOrdersToday ++;
-                sb.append("Order number: " + (numberOrder + i) + " Client: " + orders.get(numberOrder + i));
+
+                String strOrdr = "Order number: " + (numberOrder + i);
+                String strClnt = " Client: " + orders.get(numberOrder + i);
+
+                // sb.append("Order number: " + (numberOrder + i) + " Client: " + orders.get(numberOrder + i));
+                sb.append(sum.sumStrings(strOrdr,strClnt));
+
                 queueBuyersAdd(queue, sb.toString());
             }
             setNumberOrders(numberOrder + randomNumIn);

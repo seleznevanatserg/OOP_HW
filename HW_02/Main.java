@@ -10,15 +10,14 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.TreeMap;
-import java.util.concurrent.ThreadLocalRandom;
 
-import org.w3c.dom.UserDataHandler;
 
 
 
 
 public class Main {
     public static void main(String[] args) {
+
 
         Queue<String> queueClients = new LinkedList<String>();
         Map<Integer,String> orders = new TreeMap<Integer,String>();
